@@ -1,0 +1,144 @@
+.16 E 5 NATURAL false
+.16 E 5 NATURAL false
+.16 R false
+.16 E 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.33 E 5 NATURAL false
+
+.33 G 5 NATURAL false
+.33 R false
+.33 G 4 NATURAL false
+.33 R false
+
+.33 C 5 NATURAL true
+.16 R false
+.33 G 4 NATURAL false
+.16 R false
+.33 E 4 NATURAL false
+
+.16 R false
+.33 A 4 NATURAL false
+.33 B 4 NATURAL false
+.16 B 4 FLAT false
+.33 A 4 NATURAL false
+
+.22 G 4 NATURAL false
+.22 E 5 NATURAL false
+.22 G 5 NATURAL false
+.33 A 5 NATURAL false
+.16 F 5 NATURAL false
+.16 G 5 NATURAL false
+
+.16 R false
+.33 E 5 NATURAL false
+.16 C 5 NATURAL false
+.16 D 5 NATURAL false
+.33 B 4 NATURAL false
+.16 R true
+
+.33 R true
+.16 G 5 NATURAL false
+.16 F 5 SHARP false
+.16 F 5 NATURAL false
+.33 D 5 SHARP false
+.16 E 5 NATURAL false
+
+.16 R false
+.16 G 4 SHARP false
+.16 A 4 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 A 4 NATURAL false
+.16 C 5 NATURAL false
+.16 D 5 NATURAL false
+
+.33 R false
+.16 G 5 NATURAL false
+.16 F 5 SHARP false
+.16 F 5 NATURAL false
+.33 D 5 SHARP false
+.16 E 5 NATURAL false
+
+.16 R false
+.33 C 6 NATURAL false
+.16 C 6 NATURAL false
+.33 C 6 NATURAL false
+.33 R false
+
+.33 R false
+.16 G 5 NATURAL false
+.16 F 5 SHARP false
+.16 F 5 NATURAL false
+.33 D 5 SHARP false
+.16 E 5 NATURAL false
+
+.16 R false
+.16 G 4 SHARP false
+.16 A 4 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 A 4 NATURAL false
+.16 C 5 NATURAL false
+.16 D 5 NATURAL false
+
+.33 R false
+.33 E 5 FLAT false
+.16 R false
+.33 D 5 NATURAL false
+.16 R false
+
+.33 C 5 NATURAL false
+.99 R true
+
+.16 C 5 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.33 D 5 NATURAL false
+
+.16 E 5 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 A 4 NATURAL false
+.66 G 4 NATURAL false
+
+.16 C 5 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.16 D 5 NATURAL false
+.16 E 5 NATURAL false
+
+1.32 R false
+
+.16 C 5 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.33 D 5 NATURAL false
+
+.16 E 5 NATURAL false
+.16 C 5 NATURAL false
+.16 R false
+.16 A 4 NATURAL false
+.66 G 4 NATURAL false
+
+.16 E 5 NATURAL false
+.16 E 5 NATURAL false
+.16 R false
+.16 E 5 NATURAL false
+.16 R false
+.16 C 5 NATURAL false
+.33 E 5 NATURAL false
+
+.33 G 5 NATURAL false
+.33 R false
+.33 G 4 NATURAL false
+.33 R false
