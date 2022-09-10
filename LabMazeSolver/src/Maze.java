@@ -45,7 +45,6 @@ public class Maze {
     }
 
     public Square getStart() {
-        System.out.println(start);
         return start;
     }
 

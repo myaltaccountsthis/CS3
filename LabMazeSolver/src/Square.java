@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Square {
     public static final int EMPTY = 0, WALL = 1, START = 2, EXIT = 3;
 
@@ -7,11 +5,13 @@ public class Square {
 
     private int row, col;
     private int type, status;
+    private int distance;
 
     public Square(int row, int col, int type) {
         this.row = row;
         this.col = col;
         this.type = type;
+        this.distance = 1000000;
     }
 
     @Override
@@ -69,5 +69,13 @@ public class Square {
 
     public void reset() {
         this.status = 0;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }

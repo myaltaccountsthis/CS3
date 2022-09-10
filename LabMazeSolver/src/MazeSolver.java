@@ -10,7 +10,10 @@ public abstract class MazeSolver {
         this.solved = false;
         this.solvable = true;
         makeEmpty();
-        add(maze.getStart());
+        if (maze.getStart() != null) {
+            add(maze.getStart());
+            maze.getStart().setDistance(0);
+        }
     }
 
     public abstract void makeEmpty();
@@ -33,7 +36,6 @@ public abstract class MazeSolver {
 
         Square next = next();
 
-        System.out.println(next.getRow() + ", " + next.getCol());
         if (next.equals(maze.getExit())) {
             solved = true;
             return;
@@ -42,8 +44,9 @@ public abstract class MazeSolver {
         next.setStatus(Square.EXPLORED);
         for (Square neighbor : neighbors) {
             if (neighbor.getStatus() == '_' && neighbor.getType() != Square.WALL) {
-                add(neighbor);
+                neighbor.setDistance(next.getDistance() + 1);
                 neighbor.setStatus(Square.WORKING);
+                add(neighbor);
             }
         }
     }
