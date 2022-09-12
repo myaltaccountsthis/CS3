@@ -23,7 +23,6 @@ public class WordLadder {
         private Stack<String> solution = null;
 
         private final Collection<String> validWords = new HashSet<>();
-        //private final HashMap<String, Integer> wordsRequired = new HashMap<>();
         private final Queue<Stack<String>> queue = new LinkedList<>();
 
         public Solver(String start, String end) {
