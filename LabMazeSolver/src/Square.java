@@ -1,17 +1,20 @@
 public class Square {
     public static final int EMPTY = 0, WALL = 1, START = 2, EXIT = 3;
 
-    public static final int WORKING = 1, EXPLORED = 2, ON_PATH = 3;
+    public static final char UNEXPLORED = '_', WORKING = 'o', EXPLORED = '.', ON_PATH = 'x';
 
     private int row, col;
-    private int type, status;
+    private int type;
+    private char status;
     private int distance;
+    private Square parent;
 
     public Square(int row, int col, int type) {
         this.row = row;
         this.col = col;
         this.type = type;
         this.distance = 1000000;
+        this.parent = null;
     }
 
     @Override
@@ -24,7 +27,7 @@ public class Square {
             case EXIT:
                 return "E";
             default:
-                return getStatus() + "";
+                return status + "";
         }
     }
 
@@ -50,25 +53,15 @@ public class Square {
     }
 
     public char getStatus() {
-        switch (status) {
-            case EMPTY:
-                return '_';
-            case WORKING:
-                return 'o';
-            case EXPLORED:
-                return '.';
-            case ON_PATH:
-                return 'x';
-        }
-        return ' ';
+        return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(char status) {
         this.status = status;
     }
 
     public void reset() {
-        this.status = 0;
+        this.status = UNEXPLORED;
     }
 
     public int getDistance() {
@@ -77,5 +70,13 @@ public class Square {
 
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    public Square getParent() {
+        return parent;
+    }
+
+    public void setParent(Square parent) {
+        this.parent = parent;
     }
 }

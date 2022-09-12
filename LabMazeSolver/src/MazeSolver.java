@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 public abstract class MazeSolver {
     private Maze maze;
@@ -38,14 +41,21 @@ public abstract class MazeSolver {
 
         if (next.equals(maze.getExit())) {
             solved = true;
+            Square child = next.getParent();
+            while (child != null) {
+                child.setStatus(Square.ON_PATH);
+                child = child.getParent();
+            }
+
             return;
         }
         List<Square> neighbors = maze.getNeighbors(next);
         next.setStatus(Square.EXPLORED);
         for (Square neighbor : neighbors) {
-            if (neighbor.getStatus() == '_' && neighbor.getType() != Square.WALL) {
+            if (neighbor.getStatus() == Square.UNEXPLORED && neighbor.getType() != Square.WALL) {
                 neighbor.setDistance(next.getDistance() + 1);
                 neighbor.setStatus(Square.WORKING);
+                neighbor.setParent(next);
                 add(neighbor);
             }
         }

@@ -19,6 +19,7 @@ public class Maze {
                 for (int c = 0; c < grid[r].length; c++) {
                     int type = input.nextInt();
                     grid[r][c] = new Square(r, c, type);
+                    grid[r][c].setStatus(Square.UNEXPLORED);
                     if (type == Square.START)
                         start = grid[r][c];
                     if (type == Square.EXIT)
