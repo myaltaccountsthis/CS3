@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class MyLinkedList<T> implements Iterable<T> {
+public class MyLinkedList implements Iterable<Integer> {
     private ListNode head;
     private ListNode tail;
     private int size;
@@ -11,13 +11,13 @@ public class MyLinkedList<T> implements Iterable<T> {
         this.size = 0;
     }
 
-    public MyLinkedList(T val) {
+    public MyLinkedList(int val) {
         this.head = new ListNode(val);
         this.tail = head;
         this.size = 1;
     }
 
-    public void add(T newVal) {
+    public void add(int newVal) {
         if (head == null) {
             head = new ListNode(newVal);
             tail = head;
@@ -29,7 +29,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         size++;
     }
 
-    public boolean contains(T target) {
+    public boolean contains(int target) {
         for (ListNode current = head; current != null; current = current.next) {
             if (current.val == target)
                 return true;
@@ -37,17 +37,17 @@ public class MyLinkedList<T> implements Iterable<T> {
         return false;
     }
 
-    public T get(int index) {
+    public int get(int index) {
         if (index >= 0)
             for (ListNode current = head; current != null; current = current.next, index--) {
                 if (index == 0)
-                    return (T) current.val;
+                    return (int) current.val;
             }
 
         throw new IndexOutOfBoundsException();
     }
 
-    public int indexOf(T target) {
+    public int indexOf(int target) {
         int index = 0;
         for (ListNode current = head; current != null; current = current.next, index++) {
             if (current.val == target)
@@ -56,7 +56,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         return -1;
     }
 
-    public void set(T newVal, int index) {
+    public void set(int newVal, int index) {
         if (index >= 0) {
             for (ListNode current = head; current != null; current = current.next, index--) {
                 if (index == 0) {
@@ -77,7 +77,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         return head == null;
     }
 
-    public T remove(int index) {
+    public int remove(int index) {
         if (index >= 0) {
             // i will be 1 ahead in order to override current.next
             int i = 1;
@@ -86,7 +86,7 @@ public class MyLinkedList<T> implements Iterable<T> {
                 if (index == 0) {
                     head = current.next;
                     size--;
-                    return (T) current.val;
+                    return (int) current.val;
                 }
                 if (i == index) {
                     Object temp = current.next.val;
@@ -94,7 +94,7 @@ public class MyLinkedList<T> implements Iterable<T> {
                     if (current.next == null)
                         tail = current;
                     size--;
-                    return (T) temp;
+                    return (int) temp;
                 }
             }
         }
@@ -102,7 +102,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         throw new IndexOutOfBoundsException();
     }
 
-    public void add(T newVal, int index) {
+    public void add(int newVal, int index) {
         if (index >= 0) {
             // i will be 1 ahead in order to override current.next
             int i = 1;
@@ -135,7 +135,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         StringBuilder sb = new StringBuilder("[");
 
         /*
-        for (T currentVal : this) {
+        for (int currentVal : this) {
             sb.append(currentVal);
             sb.append(", ");
         }
@@ -154,7 +154,7 @@ public class MyLinkedList<T> implements Iterable<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<Integer> iterator() {
         return new NodeIterator<>();
     }
 
@@ -175,10 +175,10 @@ public class MyLinkedList<T> implements Iterable<T> {
     }
 
     private class ListNode {
-        Object val;
+        int val;
         ListNode next;
 
-        public ListNode(Object val) {
+        public ListNode(int val) {
             this.val = val;
         }
 
