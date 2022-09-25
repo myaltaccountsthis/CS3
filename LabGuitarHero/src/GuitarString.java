@@ -10,7 +10,7 @@ public class GuitarString
     /** create a guitar string of the given frequency */
     public GuitarString(double frequency) {
         // YOUR CODE HERE
-        int capacity = (int) Math.ceil(44100 / frequency);
+        int capacity = (int) Math.ceil(StdAudio.SAMPLE_RATE / frequency);
         buffer = new RingBuffer(capacity);
         for (int i = 0; i < capacity; i++) {
             buffer.enqueue(0.0);
@@ -31,7 +31,9 @@ public class GuitarString
         int size = buffer.size();
         for (int i = 0; i < size; i++) {
             buffer.dequeue();
-            buffer.enqueue(Math.random() - .5);
+            //buffer.enqueue(Math.random() - .5);
+            // better sounding thing using sin and a bit of random
+            buffer.enqueue(Math.sin((double) i / size * Math.PI * 2) * (Math.random() * .4 + .1));
         }
     }
 
