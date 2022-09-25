@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class GuitarHero {
+public class GuitarHeroVisualizer {
 
     public static void main(String[] args) {
         HashMap<Character, GuitarString> strings = new HashMap<>();
@@ -9,6 +9,13 @@ public class GuitarHero {
             strings.put(chars[i], new GuitarString(110 * Math.pow(2, i / 12.0)));
         }
 
+        final int interval = 1000;
+
+        StdDraw.setPenRadius(1.0 / interval);
+        StdDraw.enableDoubleBuffering();
+
+        double[] samples = new double[interval];
+        int n = 0;
         // the main input loop
         while (true) {
 
@@ -27,6 +34,17 @@ public class GuitarHero {
             for (GuitarString string : strings.values()) {
                 sample += string.sample();
                 string.tic();
+            }
+
+            samples[n] = sample;
+            n++;
+            if (n == interval) {
+                StdDraw.clear();
+                for (int i = 0; i < samples.length; i++) {
+                    StdDraw.point((double) i / interval, .5 + samples[i] * 1);
+                }
+                StdDraw.show();
+                n = 0;
             }
 
             // send the result to standard audio

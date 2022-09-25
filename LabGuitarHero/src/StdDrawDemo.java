@@ -63,8 +63,8 @@ public class StdDrawDemo
 	
 	public static void main(String[] args) 
 	{
-//		drawSquare();
-//		drawCircleOnClick();
-//		spinningCircles();
+		//drawSquare();
+		//drawCircleOnClick();
+		spinningCircles();
 	}
 }
