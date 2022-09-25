@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MyLinkedList<T> implements Iterable<T> {
     private ListNode head;
@@ -43,14 +45,18 @@ public class MyLinkedList<T> implements Iterable<T> {
         return false;
     }
 
-    public T get(int index) {
+    private ListNode getNode(int index) {
         if (index >= 0)
             for (ListNode current = head; current != null; current = current.next, index--) {
                 if (index == 0)
-                    return (T) current.val;
+                    return current;
             }
 
         throw new IndexOutOfBoundsException();
+    }
+
+    public T get(int index) {
+        return getNode(index).val;
     }
 
     public int indexOf(T target) {
@@ -142,6 +148,27 @@ public class MyLinkedList<T> implements Iterable<T> {
         this.size = 0;
     }
 
+    // ADVANCED
+    public boolean detectCycle() {
+        assert head != null;
+        ListNode a = head;
+        ListNode b = head.next;
+        while (b != null) {
+            if (a == b)
+                return true;
+            a =  a.next;
+            b = b.next;
+            if (b == null)
+                return false;
+            b = b.next;
+        }
+        return false;
+    }
+
+    public void createCycle(int i, int j) {
+        getNode(i).next = getNode(j);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
@@ -170,7 +197,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         return new NodeIterator<>();
     }
 
-    private class NodeIterator<E> implements Iterator<T> {
+    private class NodeIterator<E> implements Iterator<E> {
         private ListNode current = MyLinkedList.this.head;
 
         @Override
@@ -179,10 +206,10 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
 
         @Override
-        public T next() {
+        public E next() {
             Object temp = current.val;
             current = current.next;
-            return (T) temp;
+            return (E) temp;
         }
     }
 
