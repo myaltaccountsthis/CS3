@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CS3.iml" filepath="$PROJECT_DIR$/.idea/CS3.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" filepath="$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" filepath="$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGuitarHero/LabGuitarHero.iml" filepath="$PROJECT_DIR$/LabGuitarHero/LabGuitarHero.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabLinkedListQueue/LabLinkedListQueue.iml" filepath="$PROJECT_DIR$/LabLinkedListQueue/LabLinkedListQueue.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMazeSolver/LabMazeSolver.iml" filepath="$PROJECT_DIR$/LabMazeSolver/LabMazeSolver.iml" />
