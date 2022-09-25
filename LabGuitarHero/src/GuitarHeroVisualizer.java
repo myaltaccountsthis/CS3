@@ -1,4 +1,6 @@
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class GuitarHeroVisualizer {
 
@@ -9,13 +11,16 @@ public class GuitarHeroVisualizer {
             strings.put(chars[i], new GuitarString(110 * Math.pow(2, i / 12.0)));
         }
 
-        final int interval = 1000;
+        final int interval = 2500;
 
         StdDraw.setPenRadius(1.0 / interval);
+        StdDraw.setCanvasSize(1075, 512);
         StdDraw.enableDoubleBuffering();
 
         double[] samples = new double[interval];
         int n = 0;
+        boolean mouseDown = false;
+        int prevMouseIndex = -1;
         // the main input loop
         while (true) {
 
@@ -28,6 +33,18 @@ public class GuitarHeroVisualizer {
                 if (strings.containsKey(key))
                     strings.get(key).pluck();
             }
+            if (StdDraw.isMousePressed()) {
+                double x = StdDraw.mouseX();
+                int index = (int) ((x * 1075 - 4) / 28.8);
+                if (!mouseDown || index != prevMouseIndex) {
+                    mouseDown = true;
+                    if (index >= 0 && index < chars.length)
+                        strings.get(chars[index]).pluck();
+                    prevMouseIndex = index;
+                }
+            }
+            else
+                mouseDown = false;
 
             // compute the superposition of the samples
             double sample = 0.0;
@@ -41,8 +58,9 @@ public class GuitarHeroVisualizer {
             if (n == interval) {
                 StdDraw.clear();
                 for (int i = 0; i < samples.length; i++) {
-                    StdDraw.point((double) i / interval, .5 + samples[i] * 1);
+                    StdDraw.point((double) i / interval, .35 + samples[i] * .7);
                 }
+                StdDraw.picture(0.5, 1 - (150 / 512.0 / 2), "keyboard.png", 1, 150 / 512.0);
                 StdDraw.show();
                 n = 0;
             }
