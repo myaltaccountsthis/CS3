@@ -9,6 +9,9 @@
  *************************************************************************/
 
 import java.awt.Font;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
 
 public class GemGame 
 {
@@ -48,12 +51,28 @@ public class GemGame
 		boolean mouseDown = false;
 		boolean turn1 = true;
 
+		String player1Name = "";
+		String player2Name = "";
+		boolean player2Bot = true;
+		Scanner console = new Scanner(System.in);
+		System.out.print("Use Computer for Player 2? (y/n): ");
+		player2Bot = console.nextLine().equalsIgnoreCase("y");
+		System.out.print("Enter Player 1 Name: ");
+		while (player1Name.isEmpty())
+			player1Name = console.nextLine();
+		if (player2Bot)
+			player2Name = "Computer";
+		else {
+			System.out.print("Enter Player 2 Name: ");
+			while (player2Name.isEmpty())
+				player2Name = console.nextLine();
+		}
+
 		int score1 = 0;
 		int score2 = 0;
 
 		// Game continues until we fill up the entire row of gems
-		while ((player1.size() < MAX_GEMS) && (player2.size() < MAX_GEMS))
-		{
+		while ((player1.size() < MAX_GEMS) && (player2.size() < MAX_GEMS)) {
 			StdDraw.clear();
 			double mouseX = StdDraw.mouseX();
 			double mouseY = StdDraw.mouseY();
@@ -61,8 +80,39 @@ public class GemGame
 			if (current == null)
 				current = new Gem();
 
+			if (!turn1 && player2Bot) {
+				int[] scoreDiff1 = new int[player1.size() + 1];
+				int[] scoreDiff2 = new int[player2.size() + 1];
+				for (int i = 0; i < scoreDiff1.length; i++)
+					scoreDiff1[i] = score1 - player1.testScore(i, current);
+				for (int i = 0; i < scoreDiff2.length; i++)
+					scoreDiff2[i] = player2.testScore(i, current) - score2;
+				int highest1 = scoreDiff1[0], highestIndex1 = 0;
+				int highest2 = scoreDiff2[0], highestIndex2 = 0;
+				for (int i = 1; i < scoreDiff1.length; i++) {
+					int n = scoreDiff1[i];
+					if (n > highest1) {
+						highest1 = n;
+						highestIndex1 = i;
+					}
+				}
+				for (int i = 1; i < scoreDiff2.length; i++) {
+					int n = scoreDiff2[i];
+					if (n > highest2) {
+						highest2 = n;
+						highestIndex2 = i;
+					}
+				}
+				// add to greatest changed list, or prefer own if equal
+				if (highest1 > highest2)
+					player1.insertBefore(current, highestIndex1);
+				else
+					player2.insertBefore(current, highestIndex2);
+
+				current = null;
+				turn1 = true;
 			// Check for a click of the mouse, wait for release of the button
-			if (StdDraw.mousePressed())
+			} else if (StdDraw.mousePressed())
 			{
 				mouseDown = true;
 			}
@@ -99,8 +149,8 @@ public class GemGame
 			// Display the player labels plus their current score
 			StdDraw.setPenColor(StdDraw.RED);
 			StdDraw.setFont(new Font("SansSerif", Font.BOLD, 16));
-			StdDraw.textLeft(0.0, PLAYER1_Y + PLAYER_HALF_HEIGHT - TEXT_HEIGHT, "Player 1: " + score1);
-			StdDraw.textLeft(0.0, PLAYER2_Y + PLAYER_HALF_HEIGHT - TEXT_HEIGHT, "Player 2: " + score2);
+			StdDraw.textLeft(0.0, PLAYER1_Y + PLAYER_HALF_HEIGHT - TEXT_HEIGHT, player1Name + ": " + score1);
+			StdDraw.textLeft(0.0, PLAYER2_Y + PLAYER_HALF_HEIGHT - TEXT_HEIGHT, player2Name + ": " + score2);
 
 			// Draw a little blue dot to indicate whose turn it is
 			StdDraw.setPenColor(StdDraw.BLUE);

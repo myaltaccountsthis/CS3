@@ -1,5 +1,3 @@
-import org.w3c.dom.Node;
-
 public class GemList
 {
 	private Node head;
@@ -12,7 +10,7 @@ public class GemList
 	public void draw(double y) {
 		int i = 0;
 		for (Node current = head; current != null; current = current.next, i++) {
-			current.gem.draw(.05 * (i + 1), y);
+			current.gem.draw(1.0 / 16 * (i + .5), y);
 		}
 	}
 
@@ -71,6 +69,36 @@ public class GemList
 				currentMultiplier = 1;
 			}
 			prevType = currentType;
+		}
+		score += consecutivePoints * currentMultiplier;
+		return score;
+	}
+
+	public int testScore(int index, Gem toAdd) {
+		index = Math.min(index, size);
+		GemType prevType = null;
+		int i = 0;
+		int score = 0;
+		int currentMultiplier = 0;
+		int consecutivePoints = 0;
+		for (Node current = head; current != null || index == i; i++) {
+			Gem gem;
+			if (i == index)
+				gem = toAdd;
+			else
+				gem = current.gem;
+			GemType currentType = gem.getType();
+			if (currentType == prevType) {
+				consecutivePoints += gem.getPoints();
+				currentMultiplier++;
+			} else {
+				score += consecutivePoints * currentMultiplier;
+				consecutivePoints = gem.getPoints();
+				currentMultiplier = 1;
+			}
+			prevType = currentType;
+			if (i != index)
+				current = current.next;
 		}
 		score += consecutivePoints * currentMultiplier;
 		return score;
