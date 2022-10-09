@@ -31,9 +31,9 @@ public class GuitarString
         int size = buffer.size();
         for (int i = 0; i < size; i++) {
             buffer.dequeue();
-            //buffer.enqueue(Math.random() - .5);
+            buffer.enqueue(Math.random() - .5);
             // better sounding thing using sin and a bit of random
-            buffer.enqueue(Math.sin((double) i / size * Math.PI * 2) * (Math.random() * .4 + .1));
+            //buffer.enqueue(Math.sin((double) i / size * Math.PI * 2) * (Math.random() * .4 + .1));
         }
     }
 

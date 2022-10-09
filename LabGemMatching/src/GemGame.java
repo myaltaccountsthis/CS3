@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class GemGame 
+public class GemGame
 {
 	// The maximum number of gems that will fit across the screen
 	static final int MAX_GEMS = 16;
-	
+
 	// Given a gem's 0-based index, calculate its x-position
 	// in a unit box coordinate system. 
 	public static double indexToX(int i)
@@ -53,7 +53,8 @@ public class GemGame
 
 		String player1Name = "";
 		String player2Name = "";
-		boolean player2Bot = true;
+		boolean player2Bot;
+		double shotClock = 0;
 		Scanner console = new Scanner(System.in);
 		System.out.print("Use Computer for Player 2? (y/n): ");
 		player2Bot = console.nextLine().equalsIgnoreCase("y");
@@ -66,10 +67,19 @@ public class GemGame
 			System.out.print("Enter Player 2 Name: ");
 			while (player2Name.isEmpty())
 				player2Name = console.nextLine();
+			System.out.print("Enter shot clock (0 for no timer): ");
+			String line = console.nextLine();
+			try {
+				shotClock = Double.parseDouble(line);
+			}
+			catch (NumberFormatException ignored) {
+
+			}
 		}
 
 		int score1 = 0;
 		int score2 = 0;
+		long t = 0;
 
 		// Game continues until we fill up the entire row of gems
 		while ((player1.size() < MAX_GEMS) && (player2.size() < MAX_GEMS)) {
@@ -77,8 +87,10 @@ public class GemGame
 			double mouseX = StdDraw.mouseX();
 			double mouseY = StdDraw.mouseY();
 
-			if (current == null)
+			if (current == null) {
 				current = new Gem();
+				t = System.currentTimeMillis();
+			}
 
 			if (!turn1 && player2Bot) {
 				int[] scoreDiff1 = new int[player1.size() + 1];
@@ -111,7 +123,7 @@ public class GemGame
 
 				current = null;
 				turn1 = true;
-			// Check for a click of the mouse, wait for release of the button
+				// Check for a click of the mouse, wait for release of the button
 			} else if (StdDraw.mousePressed())
 			{
 				mouseDown = true;
@@ -120,7 +132,7 @@ public class GemGame
 			{
 				// See if they clicked in the Player1 area
 				if ((mouseY > PLAYER1_Y - PLAYER_HALF_HEIGHT) &&
-				    (mouseY < PLAYER1_Y + PLAYER_HALF_HEIGHT))
+						(mouseY < PLAYER1_Y + PLAYER_HALF_HEIGHT))
 				{
 					player1.insertBefore(current, xToIndex(mouseX));
 					current = null;
@@ -128,7 +140,7 @@ public class GemGame
 				}
 				// See if they clicked in the Player2 area
 				else if ((mouseY > PLAYER2_Y - PLAYER_HALF_HEIGHT) &&
-				         (mouseY < PLAYER2_Y + PLAYER_HALF_HEIGHT))
+						(mouseY < PLAYER2_Y + PLAYER_HALF_HEIGHT))
 				{
 					player2.insertBefore(current, xToIndex(mouseX));
 					current = null;
@@ -136,6 +148,15 @@ public class GemGame
 				}
 				// Regardless, this click is over even if we didn't drop the gem
 				mouseDown = false;
+			}
+
+			if (shotClock != 0 && System.currentTimeMillis() - t >= shotClock * 1000) {
+				if (turn1)
+					player1.insertBefore(current, 99);
+				else
+					player2.insertBefore(current, 99);
+				current = null;
+				turn1 = !turn1;
 			}
 
 			score1 = player1.score();
@@ -151,6 +172,9 @@ public class GemGame
 			StdDraw.setFont(new Font("SansSerif", Font.BOLD, 16));
 			StdDraw.textLeft(0.0, PLAYER1_Y + PLAYER_HALF_HEIGHT - TEXT_HEIGHT, player1Name + ": " + score1);
 			StdDraw.textLeft(0.0, PLAYER2_Y + PLAYER_HALF_HEIGHT - TEXT_HEIGHT, player2Name + ": " + score2);
+			StdDraw.setPenRadius(5.0 / 512);
+			if (shotClock != 0)
+				StdDraw.arc(.98, .98, .015, 90 + 360 * (System.currentTimeMillis() - t) / (shotClock * 1000), 450);
 
 			// Draw a little blue dot to indicate whose turn it is
 			StdDraw.setPenColor(StdDraw.BLUE);
@@ -172,13 +196,13 @@ public class GemGame
 
 		// Display the final message saying who won the game
 		StdDraw.setPenColor(StdDraw.RED);
-        StdDraw.setFont(new Font("SansSerif", Font.BOLD, 24));
-        if (score1 == score2)
-        	StdDraw.text(0.5, SCORE_Y, "Tie game!");
-        else if (score1 > score2)
-        	StdDraw.text(0.5, SCORE_Y, "Player 1 wins!");
-        else
-        	StdDraw.text(0.5, SCORE_Y, "Player 2 wins!");
+		StdDraw.setFont(new Font("SansSerif", Font.BOLD, 24));
+		if (score1 == score2)
+			StdDraw.text(0.5, SCORE_Y, "Tie game!");
+		else if (score1 > score2)
+			StdDraw.text(0.5, SCORE_Y, "Player 1 wins!");
+		else
+			StdDraw.text(0.5, SCORE_Y, "Player 2 wins!");
 
 		StdDraw.show(0);
 	}

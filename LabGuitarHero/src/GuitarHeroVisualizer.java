@@ -58,7 +58,8 @@ public class GuitarHeroVisualizer {
             if (n == interval) {
                 StdDraw.clear();
                 for (int i = 0; i < samples.length; i++) {
-                    StdDraw.point((double) i / interval, .35 + samples[i] * .7);
+                    StdDraw.line((double) i / interval, .35 + samples[i] * .35, (double) (i + 1) / interval, .35 + samples[i + 1] * .35);
+                    //StdDraw.point((double) i / interval, .35 + samples[i] * .7);
                 }
                 StdDraw.picture(0.5, 1 - (150 / 512.0 / 2), "keyboard.png", 1, 150 / 512.0);
                 StdDraw.show();

@@ -1,7 +1,17 @@
 import java.awt.*;
 
 enum GemType {
-    GREEN, BLUE, ORANGE; //define the different types of Gems, comma delimited
+	GREEN("gem_green"), BLUE("gem_blue"), ORANGE("gem_orange"), BOMB("bomb");
+
+	private String fileName;
+
+	GemType(String fileName) {
+		this.fileName = fileName + ".png";
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
 }
 
 public class Gem
@@ -36,9 +46,10 @@ public class Gem
 	public void draw(double x, double y) {
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.setFont(new Font("SansSerif", Font.BOLD, 14));
-		String fileName = "gem_" + type.name().toLowerCase() + ".png";
+		String fileName = type.getFileName();
 		StdDraw.picture(x, y, fileName);
-		StdDraw.text(x, y, points + "");
+		if (type != GemType.BOMB)
+			StdDraw.text(x, y, points + "");
 	}
 
 	/** Tester main method */

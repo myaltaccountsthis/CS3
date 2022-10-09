@@ -17,14 +17,14 @@ public class GemList
 	@Override
 	public String toString() {
 		if (head == null)
-			return "<none>";
+			return "<none> size=" + size;
 		StringBuilder sb = new StringBuilder();
 		for (Node current = head; current != null; current = current.next) {
 			if (current != head)
 				sb.append(" -> ");
 			sb.append(current.gem);
 		}
-		return sb.toString();
+		return sb.append(" size=").append(size).toString();
 	}
 
 	public void insertBefore(Gem gem, int index) {
@@ -33,9 +33,15 @@ public class GemList
 		index = Math.min(index, size);
 		Node node = new Node(gem);
 		if (index == 0) {
-			if (head != null)
-				node.next = head;
-			head = node;
+			node.next = head;
+			if (gem.getType() != GemType.BOMB) {
+				head = node;
+				size++;
+			}
+			else if (head != null) {
+				head = head.next;
+				size--;
+			}
 		}
 		else {
 			int i = 1;
@@ -43,12 +49,20 @@ public class GemList
 			for (current = head; current != null; current = current.next, i++) {
 				if (i == index) {
 					node.next = current.next;
-					current.next = node;
+					if (gem.getType() == GemType.BOMB) {
+						if (current.next != null) {
+							current.next = current.next.next;
+							size--;
+						}
+					}
+					else
+						current.next = node;
+					if (gem.getType() != GemType.BOMB)
+						size++;
 					break;
 				}
 			}
 		}
-		size++;
 	}
 
 	public int score() {
@@ -150,5 +164,5 @@ public class GemList
 		System.out.println("\n" + list);
 		System.out.println("size = " + list.size() + ", score = " + list.score());
 		list.draw(0.3);
-	}	
+	}
 }
