@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ShoppingAdvanced {
     // returns the greatest profit from i to stock.length - 1
     private int recursiveSell(int[] stock, int n, int i) {
@@ -10,6 +14,29 @@ public class ShoppingAdvanced {
             highest = Math.max(highest, recursiveSell(stock, n, j));
         }
         return highest;
+    }
+    private int loopSell(int[] stock, int k) {
+        List<Integer> list = new ArrayList<>();
+        int min = stock[0];
+        for (int i = 1; i < stock.length; i++) {
+            int n = stock[i];
+            if (n < stock[i - 1] && stock[i - 1] > min) {
+                list.add(stock[i - 1] - min);
+                min = n;
+            }
+            else if (n < min)
+                min = n;
+        }
+        if (stock[stock.length - 1] > min)
+            list.add(stock[stock.length - 1] - min);
+
+        list.sort((a, b) -> b - a);
+        int profit = 0;
+        for (int i = 0; i < Math.min(k, list.size()); i++) {
+            profit += list.get(i);
+        }
+
+        return profit;
     }
 
     public int buySell2(int[] stock) {
