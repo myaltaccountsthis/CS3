@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CS3.iml" filepath="$PROJECT_DIR$/.idea/CS3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabBoggle/LabBoggle.iml" filepath="$PROJECT_DIR$/LabBoggle/LabBoggle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabForestFire/LabForestFire.iml" filepath="$PROJECT_DIR$/LabForestFire/LabForestFire.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" filepath="$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" filepath="$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGuitarHero/LabGuitarHero.iml" filepath="$PROJECT_DIR$/LabGuitarHero/LabGuitarHero.iml" />
