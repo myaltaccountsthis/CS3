@@ -5,9 +5,10 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class WordLadder {
-    private ArrayList<String> dictionary;
+    private Collection<String> dictionary;
 
     public WordLadder(String dictionaryFile) throws FileNotFoundException {
+        long t = System.nanoTime();
         dictionary = new ArrayList<>();
         Scanner input = new Scanner(new File(dictionaryFile));
         while (input.hasNextLine()) {
@@ -15,12 +16,14 @@ public class WordLadder {
             dictionary.add(line.toLowerCase());
         }
         input.close();
+        System.out.println("Load time: " + (System.nanoTime() - t) / 1000000 + " ms");
     }
 
     private class Solver {
         private final String start, end;
         private boolean ran = false, success = false;
         private Stack<String> solution = null;
+        long adjTime = 0;
 
         private final Collection<String> validWords = new HashSet<>();
         private final Queue<Stack<String>> queue = new LinkedList<>();
@@ -30,16 +33,12 @@ public class WordLadder {
             this.end = end;
         }
 
-        private String getErrorMessage() {
-            return "No ladder between " + start + " and " + end;
-        }
-
-        private String getSuccessMessage(Stack<String> stack) {
-            return "Found a ladder! >>> " + stack;
-        }
-
         public String getMessage() {
-            return !ran ? "Ladder not checked" : success && solution != null ? getSuccessMessage(solution) : getErrorMessage();
+            if (!ran)
+                return "Ladder not checked";
+            if (success && solution != null)
+                return "Found a ladder! >>> " + solution;
+            return "No ladder between " + start + " and " + end;
         }
 
         /**
@@ -49,17 +48,24 @@ public class WordLadder {
          * @return
          */
         private Collection<String> getAdjacentWords(String word) {
+            long t = System.nanoTime();
             Collection<String> words = new ArrayList<>();
             // optimization, the fastest way to get all adjacent chars (26 * word.length(), e.g. 130 for 5 letter word)
             // compare to looping through all in validWords and checking each one's character difference (e.g. 8.4k for 5 letter word)
+            char[] arr = word.toCharArray();
             for (int i = 0; i < word.length(); i++) {
+                char original = word.charAt(i);
                 for (char c = 'a'; c <= 'z'; c++) {
+                    // using char array is faster bc string concatenation substring is slow
+                    arr[i] = c;
+                    String s = new String(arr);
                     // don't need to check if s.equals(word) bc validWords.contains(word) will return false
-                    String s = word.substring(0, i) + c + word.substring(i + 1);
                     if (validWords.contains(s))
                         words.add(s);
                 }
+                arr[i] = original;
             }
+            adjTime += System.nanoTime() - t;
             return words;
         }
 
@@ -92,8 +98,8 @@ public class WordLadder {
                     shortest = stack;
                     break;
                 }
-                Collection<String> adjacent = getAdjacentWords(stack.peek());
 
+                Collection<String> adjacent = getAdjacentWords(stack.peek());
                 for (String str : adjacent) {
                     Stack<String> s = new Stack<>() {{ addAll(stack); push(str); }};
                     validWords.remove(str);
@@ -121,7 +127,7 @@ public class WordLadder {
             String start = scanner.next(), end = scanner.next();
             long solve = System.currentTimeMillis();
             Solver solver = solve(start, end);
-            System.out.println((System.currentTimeMillis() - solve) + "\t: " + solver.getMessage());
+            System.out.println((System.currentTimeMillis() - solve) + "\t" + solver.adjTime / 1000000 + "\t: " + solver.getMessage());
             scanner.close();
         }
         System.out.println("Took " + (System.currentTimeMillis() - t) + " ms");
