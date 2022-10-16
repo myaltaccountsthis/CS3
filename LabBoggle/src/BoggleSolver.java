@@ -5,31 +5,25 @@ import java.util.*;
 
 class DictionaryPrefix {
 	private HashMap<String, DictionaryPrefix> subPrefixes;
-	private List<String> words;
 	private String prefix;
 
 	public DictionaryPrefix(Set<String> dictionary) {
-		this(dictionary, "",null);
+		this(dictionary, "", dictionary);
 	}
 
-	public DictionaryPrefix(Set<String> dictionary, String newPrefix, DictionaryPrefix parent) {
+	public DictionaryPrefix(Set<String> dictionary, String newPrefix, Collection<String> parentWords) {
 		this.prefix = newPrefix;
 		this.subPrefixes = new HashMap<>();
-		this.words = new ArrayList<>();
-		if (parent == null)
-			words.addAll(dictionary);
-		else {
-			for (String s : parent.words)
-				if (s.startsWith(newPrefix))
-					words.add(s);
-		}
+		List<String> words = new ArrayList<>();
+		for (String s : parentWords)
+			if (s.startsWith(newPrefix))
+				words.add(s);
+
 		for (String word : words) {
-			if (word.startsWith(newPrefix)) {
-				if (word.length() != newPrefix.length()) {
-					String p = newPrefix + word.charAt(newPrefix.length());
-					if (!subPrefixes.containsKey(p)) {
-						subPrefixes.put(p, new DictionaryPrefix(dictionary, p, this));
-					}
+			if (word.length() != newPrefix.length()) {
+				String p = newPrefix + word.charAt(newPrefix.length());
+				if (!subPrefixes.containsKey(p)) {
+					subPrefixes.put(p, new DictionaryPrefix(dictionary, p, words));
 				}
 			}
 		}
@@ -45,7 +39,7 @@ class DictionaryPrefix {
 	}
 
 	public boolean hasNext() {
-		return !words.isEmpty();
+		return !subPrefixes.isEmpty();
 	}
 }
 
