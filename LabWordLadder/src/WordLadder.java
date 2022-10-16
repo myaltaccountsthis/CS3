@@ -1,27 +1,28 @@
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class WordLadder {
-    private Collection<String> dictionary;
+    private final Collection<String> dictionary;
 
     public WordLadder(String dictionaryFile) throws FileNotFoundException {
         long t = System.nanoTime();
-        dictionary = new ArrayList<>();
-        Scanner input = new Scanner(new File(dictionaryFile));
-        while (input.hasNextLine()) {
-            String line = input.nextLine();
-            dictionary.add(line.toLowerCase());
+        // scanner bad
+        BufferedReader reader = new BufferedReader(new FileReader(dictionaryFile));
+        dictionary = reader.lines().map(String::toLowerCase).toList();
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        input.close();
-        System.out.println("Load time: " + (System.nanoTime() - t) / 1000000 + " ms");
+        System.out.println("Load time: " + (System.nanoTime() - t) / 1e6 + " ms");
     }
 
     private class Solver {
         private final String start, end;
-        private boolean ran = false, success = false;
+        private boolean ran = false;
         private Stack<String> solution = null;
         long adjTime = 0;
 
@@ -36,13 +37,13 @@ public class WordLadder {
         public String getMessage() {
             if (!ran)
                 return "Ladder not checked";
-            if (success && solution != null)
+            if (solution != null)
                 return "Found a ladder! >>> " + solution;
             return "No ladder between " + start + " and " + end;
         }
 
         /**
-         * Return all words that differ by one letter from {@link String word}, if they are not in {@link ArrayList<String> ignoreList}
+         * Return all words that differ by one letter from {@code String word}, if they are not in {@code ArrayList<String> ignoreList}
          *
          * @param word
          * @return
@@ -69,24 +70,19 @@ public class WordLadder {
             return words;
         }
 
-        private void onSuccess(Stack<String> s) {
-            this.success = true;
-            this.solution = s;
-        }
-
-        public Stack<String> solve() {
+        public void solve() {
             assert !ran : "Solver already ran";
             ran = true;
 
             if (start.length() != end.length())
-                return null;
+                return;
 
             { // setup
                 for (String s : dictionary)
                     if (s.length() == start.length())
                         validWords.add(s);
                 if (!validWords.contains(start) || !validWords.contains(end))
-                    return null;
+                    return;
                 queue.offer(new Stack<>() {{ push(start); }});
                 validWords.remove(start);
             }
@@ -107,8 +103,7 @@ public class WordLadder {
                 }
             }
 
-            onSuccess(shortest);
-            return shortest;
+            this.solution = shortest;
         }
     }
 
@@ -119,23 +114,24 @@ public class WordLadder {
     }
 
     public void solveFile(String fileName) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(fileName));
-        long t = System.currentTimeMillis();
-        while (input.hasNextLine()) {
-            String line = input.nextLine();
-            Scanner scanner = new Scanner(line);
-            String start = scanner.next(), end = scanner.next();
-            long solve = System.currentTimeMillis();
+        long t = System.nanoTime();
+        System.out.println("ms\t\tadj ms\t  result");
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        Iterable<String> lines = reader.lines().toList();
+        for (String line : lines) {
+            long solve = System.nanoTime();
+            String[] tokens = line.split(" ");
+            String start = tokens[0], end = tokens[1];
             Solver solver = solve(start, end);
-            System.out.println((System.currentTimeMillis() - solve) + "\t" + solver.adjTime / 1000000 + "\t: " + solver.getMessage());
-            scanner.close();
+            System.out.println((System.nanoTime() - solve) / 1000000 + "\t\t" + solver.adjTime / 1000000 + "\t\t: " + solver.getMessage());
         }
-        System.out.println("Took " + (System.currentTimeMillis() - t) + " ms");
-        input.close();
+        System.out.println("Took " + (System.nanoTime() - t) / 1000000 + " ms to solve file");
     }
 
     public static void main(String[] args) throws FileNotFoundException {
+        long t = System.nanoTime();
         WordLadder wordLadder = new WordLadder("dictionary.txt");
         wordLadder.solveFile("input.txt");
+        System.out.println("Total time: " + (System.nanoTime() - t) / 1e6 + " ms");
     }
 }
