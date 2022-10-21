@@ -73,6 +73,15 @@ public class MyLinkedList implements Iterable<Integer> {
         return size;
     }
 
+    public int sizeRecursive() {
+        return sizeRecursiveHelper(head);
+    }
+    private int sizeRecursiveHelper(ListNode node) {
+        if (node == null)
+            return 0;
+        return sizeRecursiveHelper(node.next) + 1;
+    }
+
     public boolean isEmpty() {
         return head == null;
     }
