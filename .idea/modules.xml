@@ -14,8 +14,10 @@
       <module fileurl="file://$PROJECT_DIR$/LabMyLinkedList/LabMyLinkedList.iml" filepath="$PROJECT_DIR$/LabMyLinkedList/LabMyLinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMyStack/LabMyStack.iml" filepath="$PROJECT_DIR$/LabMyStack/LabMyStack.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabNumberList/LabNumberList.iml" filepath="$PROJECT_DIR$/LabNumberList/LabNumberList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabSalesman/LabSalesman.iml" filepath="$PROJECT_DIR$/LabSalesman/LabSalesman.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" filepath="$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" filepath="$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabUltima/LabUltima.iml" filepath="$PROJECT_DIR$/LabUltima/LabUltima.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabWordLadder/LabWordLadder.iml" filepath="$PROJECT_DIR$/LabWordLadder/LabWordLadder.iml" />
     </modules>
   </component>
