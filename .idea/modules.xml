@@ -3,20 +3,25 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CS3.iml" filepath="$PROJECT_DIR$/.idea/CS3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabBinPacking/LabBinPacking.iml" filepath="$PROJECT_DIR$/LabBinPacking/LabBinPacking.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabBoggle/LabBoggle.iml" filepath="$PROJECT_DIR$/LabBoggle/LabBoggle.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabForestFire/LabForestFire.iml" filepath="$PROJECT_DIR$/LabForestFire/LabForestFire.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" filepath="$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" filepath="$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGuitarHero/LabGuitarHero.iml" filepath="$PROJECT_DIR$/LabGuitarHero/LabGuitarHero.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabHuffmanCoding/LabHuffmanCoding.iml" filepath="$PROJECT_DIR$/LabHuffmanCoding/LabHuffmanCoding.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabLinkedListQueue/LabLinkedListQueue.iml" filepath="$PROJECT_DIR$/LabLinkedListQueue/LabLinkedListQueue.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMazeSolver/LabMazeSolver.iml" filepath="$PROJECT_DIR$/LabMazeSolver/LabMazeSolver.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMelodyMaker/LabMelodyMaker.iml" filepath="$PROJECT_DIR$/LabMelodyMaker/LabMelodyMaker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabMinHeap/LabMinHeap.iml" filepath="$PROJECT_DIR$/LabMinHeap/LabMinHeap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabMyBST/LabMyBST.iml" filepath="$PROJECT_DIR$/LabMyBST/LabMyBST.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMyLinkedList/LabMyLinkedList.iml" filepath="$PROJECT_DIR$/LabMyLinkedList/LabMyLinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMyStack/LabMyStack.iml" filepath="$PROJECT_DIR$/LabMyStack/LabMyStack.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabNumberList/LabNumberList.iml" filepath="$PROJECT_DIR$/LabNumberList/LabNumberList.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabSalesman/LabSalesman.iml" filepath="$PROJECT_DIR$/LabSalesman/LabSalesman.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" filepath="$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" filepath="$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabTwentyQuestions/LabTwentyQuestions.iml" filepath="$PROJECT_DIR$/LabTwentyQuestions/LabTwentyQuestions.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabUltima/LabUltima.iml" filepath="$PROJECT_DIR$/LabUltima/LabUltima.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabWordLadder/LabWordLadder.iml" filepath="$PROJECT_DIR$/LabWordLadder/LabWordLadder.iml" />
     </modules>
