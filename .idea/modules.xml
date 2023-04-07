@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/CS3.iml" filepath="$PROJECT_DIR$/.idea/CS3.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabBinPacking/LabBinPacking.iml" filepath="$PROJECT_DIR$/LabBinPacking/LabBinPacking.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabBoggle/LabBoggle.iml" filepath="$PROJECT_DIR$/LabBoggle/LabBoggle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabCryptography/LabCryptography.iml" filepath="$PROJECT_DIR$/LabCryptography/LabCryptography.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabEmployeeDatabase/LabEmployeeDatabase.iml" filepath="$PROJECT_DIR$/LabEmployeeDatabase/LabEmployeeDatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabForestFire/LabForestFire.iml" filepath="$PROJECT_DIR$/LabForestFire/LabForestFire.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" filepath="$PROJECT_DIR$/LabGameOfLife/LabGameOfLife.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" filepath="$PROJECT_DIR$/LabGemMatching/LabGemMatching.iml" />
@@ -18,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/LabMyLinkedList/LabMyLinkedList.iml" filepath="$PROJECT_DIR$/LabMyLinkedList/LabMyLinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabMyStack/LabMyStack.iml" filepath="$PROJECT_DIR$/LabMyStack/LabMyStack.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabNumberList/LabNumberList.iml" filepath="$PROJECT_DIR$/LabNumberList/LabNumberList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabPhoneBook/LabPhoneBook.iml" filepath="$PROJECT_DIR$/LabPhoneBook/LabPhoneBook.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabSalesman/LabSalesman.iml" filepath="$PROJECT_DIR$/LabSalesman/LabSalesman.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" filepath="$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" filepath="$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" />
