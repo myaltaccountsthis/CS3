@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/LabBinPacking/LabBinPacking.iml" filepath="$PROJECT_DIR$/LabBinPacking/LabBinPacking.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabBoggle/LabBoggle.iml" filepath="$PROJECT_DIR$/LabBoggle/LabBoggle.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabCryptography/LabCryptography.iml" filepath="$PROJECT_DIR$/LabCryptography/LabCryptography.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabDynamicProgramming/LabDynamicProgramming.iml" filepath="$PROJECT_DIR$/LabDynamicProgramming/LabDynamicProgramming.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabEmployeeDatabase/LabEmployeeDatabase.iml" filepath="$PROJECT_DIR$/LabEmployeeDatabase/LabEmployeeDatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabForestFire/LabForestFire.iml" filepath="$PROJECT_DIR$/LabForestFire/LabForestFire.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabFullyFunctional/LabFullyFunctional.iml" filepath="$PROJECT_DIR$/LabFullyFunctional/LabFullyFunctional.iml" />
@@ -29,6 +30,7 @@
       <module fileurl="file://$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" filepath="$PROJECT_DIR$/LabShoppingCart/LabShoppingCart.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabShortestPath/LabShortestPath.iml" filepath="$PROJECT_DIR$/LabShortestPath/LabShortestPath.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" filepath="$PROJECT_DIR$/LabSnowflake/LabSnowflake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabThievery/LabThievery.iml" filepath="$PROJECT_DIR$/LabThievery/LabThievery.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabTwentyQuestions/LabTwentyQuestions.iml" filepath="$PROJECT_DIR$/LabTwentyQuestions/LabTwentyQuestions.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabUltima/LabUltima.iml" filepath="$PROJECT_DIR$/LabUltima/LabUltima.iml" />
       <module fileurl="file://$PROJECT_DIR$/LabWordLadder/LabWordLadder.iml" filepath="$PROJECT_DIR$/LabWordLadder/LabWordLadder.iml" />
